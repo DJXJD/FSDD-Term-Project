@@ -1,50 +1,72 @@
-/**
- * SYST 17796 Project Base code.
- * Students can modify and extend to implement their game.
- * Add your name as an author and the date!
- */
 package goFishGame;
 
+import goFishGame.Card;
+import java.util.ArrayList;
+
 /**
- * A class that models each Player in the game. Players have an identifier, which should be unique.
- *
- * @author dancye
- * @author Paul Bonenfant Jan 2020
- * @author Megha Patel
+ * This class <enter description>
+ * @author Nick De Luca
  */
-public abstract class Player {
+public class Player {
 
-    private String name; //the unique name for this player
+    private String name;
+    private PlayerHand hand; //delegation
+    private int score;
 
-    /**
-     * A constructor that allows you to set the player's unique ID
-     *
-     * @param name the unique ID to assign to this player.
-     */
-    public Player(String name) {
+    public Player(String name,PlayerHand hand) {
         this.name = name;
+        this.hand = hand;
     }
 
-    /**
-     * @return the player name
-     */
-    public String getName() {
+    public void setHand(PlayerHand hand) {
+        this.hand = hand;
+    }
+   
+    public ArrayList<Card> getHand() {
+        return hand.getHand(); //delegation
+    }
+
+    public String getName(){
         return name;
     }
 
-    /**
-     * Ensure that the playerID is unique
-     *
-     * @param name the player name to set
-     */
-    public void setName(String name) {
-        this.name = name;
+    public int getScore() {
+        return score;
     }
-
-    /**
-     * The method to be overridden when you subclass the Player class with your specific type of Player and filled in
-     * with logic to play your game.
-     */
-    public abstract void play();
-
+    //adds one to score
+    public void addToScore(){
+        this.score += 1;
+    }
+    
+    public void checkScore(Card card){
+        int cardCount = 0;
+        for (Card c : this.getHand()) {
+            if(c.getValue().getNum()==card.getValue().getNum()){
+                    cardCount++;
+            }
+        }
+        if(cardCount == 4){
+            hand.removeFromHand(card);
+            score++;
+        }
+    }
+    //adds a card to the player's hand instance var object
+    public boolean addToHand(Card card){ //delegation
+        
+        return hand.addToHand(card);
+    }   
+    public boolean removeFromHand(Card card){ //delegation
+        
+        return hand.removeFromHand(card);
+    } 
+    public boolean checkHand(Card card){ //delegation
+        
+        return hand.checkHand(card);
+    } 
+    
+    @Override
+    public String toString() {
+        return "Player: " + "name=" + name + "'s score=" + score +"\n"+hand.toString();
+    }
+    
 }
