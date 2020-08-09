@@ -12,6 +12,8 @@ import java.util.ArrayList;
 /**
  * This abstract class defines a group of cards
  * @author Nick De Luca
+ * @author Daniel Crawford
+ * @author David Vejgman
  */
 public abstract class GroupOfCards{
 

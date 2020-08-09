@@ -12,6 +12,8 @@ import java.util.ArrayList;
  * This class defines the decks properties and attributes
  *
  * @author Nick De Luca
+ * @author Daniel Crawford
+ * @author David Vejgman
  */
 public class Deck extends GroupOfCards {
     /**
