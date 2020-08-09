@@ -23,25 +23,25 @@ public class GoFishApp {
         System.out.println(testDeck.showCards());
         System.out.println();
         
-//        //testing card draws
+        //testing card draws
 //        System.out.println(testDeck.getCardList().get(0));
 //        System.out.println(testDeck.drawCard());
 //        System.out.println(testDeck.getCardList().get(0));
-//        
-//        //testing the shuffle method
+        
+        //testing the shuffle method
 //        testDeck.shuffle();
 //        System.out.println(testDeck);
-//        
-//        
-//         //make a player Hand
-//        PlayerHand nicksHand = new PlayerHand(5);//5 is the number of cards u want
-//        //make a player 
-//        Player p1 = new Player("Nick",nicksHand);
-//        
-//        for (int i = 0; i < nicksHand.getCardListSize(); i++) {
-//            nicksHand.AddCard(testDeck.drawCard());
-//        }
         
+        
+         //make a player Hand
+        PlayerHand nicksHand = new PlayerHand(12);//5 is the number of cards u want
+        //make a player 
+        Player p1 = new Player("Nick",nicksHand);
+        
+        for (int i = 0; i < nicksHand.getCardListSize(); i++) {
+            nicksHand.AddCard(testDeck.drawCard());
+        }
+        System.out.println(nicksHand.showCards());
         
     }
 
