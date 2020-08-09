@@ -1,50 +1,47 @@
 package goFishGame;
 
-import goFishGame.Rank;
-import goFishGame.Suit;
-
 public class Card {
 
-    private Rank value;
+    private Rank rank;
     private Suit suit;
     
-    //public static final String[]SUITS={"Hearts","Diamonds","Spades","Clubs"};
-
-    public Card() {
-    }
-    
     public Card(Rank value, Suit suit) {
-        this.value = value;
+        this.rank = value;
         this.suit = suit;
     }
     
-    public Rank getValue() {
-        return this.value;
+    public int getRankNum() {
+        return rank.getNum();
+    }
+    
+    public String getRankName() {
+        return rank.getName();
+    }
+    
+    public String getRankShortName() {
+        return rank.getShortName();
     }
 
-    /**
-     * 
-     * @param value
-     */
-    public void setValue(Rank value) {
-        this.value = value;
+    public int getSuitNum() {
+        return suit.getNum();
     }
-    public Suit getSuit() {
-        return this.suit;
+    
+    public String getSuitName() {
+        return suit.getName();
     }
-
-    /**
-     * 
-     * @param suit
-     */
-    public void setSuit(Suit suit) {
-        this.suit = suit;
+    
+    public char getSuitSymbol() {
+        return suit.getSymbol();
     }
 
     @Override
     public String toString() {
         
-        return String.format("%5s of %-10s[%s] ",value.getName(), suit.getName(),this.getSuit().getSymbol());
+        return String.format(""
+		+ "%5s of %-8s [%s]",
+		getRankName(),
+		getSuitName(),
+		getSuitSymbol());
     }
 
 }

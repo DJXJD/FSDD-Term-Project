@@ -6,7 +6,6 @@
 
 package goFishGame;
 
-import goFishGame.Card;
 import java.util.ArrayList;
 
 /**
@@ -83,7 +82,7 @@ public class Deck extends GroupOfCards{
         for (Card c : this.getHand()) {
            
             if(c.getSuit().getName().equalsIgnoreCase(card.getSuit().getName()) 
-                    && c.getValue().getNum() == card.getValue().getNum()){
+                    && c.getRank().getNum() == card.getRank().getNum()){
                 this.getHand().remove(c);
                 return true;
             }

@@ -23,12 +23,12 @@ public enum Rank {
     
     private int num;
     private String name;
-    private String letter;
+    private String shortName;
     
-    private Rank(int num, String name, String letter) {
+    private Rank(int num, String name, String shortName) {
         this.num = num;
         this.name = name;
-        this.letter = letter;
+        this.shortName = shortName;
     }
 
     public int getNum() {
@@ -39,8 +39,8 @@ public enum Rank {
         return name;
     }
 
-    public String getLetter() {
-        return letter;
+    public String getShortName() {
+        return shortName;
     }
     
     

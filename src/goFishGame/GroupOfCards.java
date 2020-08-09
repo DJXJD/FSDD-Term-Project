@@ -36,8 +36,8 @@ public abstract class GroupOfCards{
         Card lowest = hand.get(0);
         for (int i = 0; i < hand.size(); i++) {
             for (int j = 1; j < hand.size(); j++) {
-                if(hand.get(j).getValue().getNum() 
-                        < hand.get(j-1).getValue().getNum()){
+                if(hand.get(j).getRank().getNum() 
+                        < hand.get(j-1).getRank().getNum()){
                     
                     lowest = hand.get(j);
                     hand.remove(j);

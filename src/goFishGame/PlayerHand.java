@@ -36,11 +36,11 @@ public class PlayerHand extends GroupOfCards {
         showHand += "\n";
         for (int i = 0; i < this.getHand().size(); i++) {
            showHand += "___________\n";
-            if(this.getHand().get(i).getValue().getNum()==10)
+            if(this.getHand().get(i).getRank().getNum()==10)
                 spaceFormat = "|%s%7s|";
             else
                 spaceFormat = "|%s%8s|"; 
-           showHand += String.format(spaceFormat,this.getHand().get(i).getValue().getLetter(),this.getHand().get(i).getSuit().getSymbol())+"\n";     
+           showHand += String.format(spaceFormat,this.getHand().get(i).getRank().getShortName(),this.getHand().get(i).getSuit().getSymbol())+"\n";     
            showHand += "|         |\n";
            showHand += "|         |\n";
            showHand += "|         |\n";
@@ -58,7 +58,7 @@ public class PlayerHand extends GroupOfCards {
     public boolean checkHand(Card card) {
         for (Card c : this.getHand()) {
            
-            if(c.getValue().getNum()==card.getValue().getNum()){
+            if(c.getRank().getNum()==card.getRank().getNum()){
                 return true;
             }
         }

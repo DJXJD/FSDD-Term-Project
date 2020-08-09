@@ -12,12 +12,12 @@ public enum Suit {
     SPADES(4, "Spades", '\u2660');
     
     private int num;
-    private String face;
+    private String name;
     private char symbol;
 
-    private Suit(int num, String face, char symbol) {
+    private Suit(int num, String name, char symbol) {
         this.num = num;
-        this.face = face;
+        this.name = name;
         this.symbol = symbol;
     }
 
@@ -26,7 +26,7 @@ public enum Suit {
     }
 
     public String getName() {
-        return face;
+        return name;
     }
 
     public char getSymbol() {
