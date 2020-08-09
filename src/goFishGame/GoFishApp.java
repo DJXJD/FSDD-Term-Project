@@ -1,8 +1,6 @@
 package goFishGame;
 
-import java.util.InputMismatchException;
-import java.util.Random;
-import java.util.Scanner;
+import java.util.ArrayList;
 
 /**
  * A class that fills a magic hand of 7 cards with random Card Objects and then
@@ -33,16 +31,42 @@ public class GoFishApp {
 //        System.out.println(testDeck);
         
         
-         //make a player Hand
-        PlayerHand nicksHand = new PlayerHand(12);//5 is the number of cards u want
+        //make a player Hand
+        PlayerHand nicksHand = new PlayerHand(4);//5 is the number of cards u want
         //make a player 
         Player p1 = new Player("Nick",nicksHand);
+        Rank rank = Rank.ACE;
+        Suit suit = Suit.CLUBS;
+        Card card = new Card(rank,suit);
+         nicksHand.AddCard(card);
+         nicksHand.AddCard(card);
+         nicksHand.AddCard(card);
+         nicksHand.AddCard(card);
+         //nicksHand.AddCard(new Card(Rank.EIGHT,Suit.DIAMONDS));
         
-        for (int i = 0; i < nicksHand.getCardListSize(); i++) {
-            nicksHand.AddCard(testDeck.drawCard());
+        p1.checkScore(card);
+          ArrayList<Card> list = new ArrayList(6);
+          
+          for (int i = 0; i < 5; i++) {
+            list.add(new Card(Rank.EIGHT,Suit.DIAMONDS));
+            System.out.println(list.get(i));
         }
+        list.remove(0);
+          list.remove(0);
+            list.remove(0);
+              list.remove(0);
+                list.remove(0);
+              for (int i = 0; i < list.size(); i++) {
+    
+            System.out.println(list.get(i));
+        }
+          
+//         System.out.println(p1.getScore());
+//        for (int i = 0; i < nicksHand.getCardListSize(); i++) {
+//            nicksHand.AddCard(testDeck.drawCard());
+//        }
         System.out.println(nicksHand.showCards());
-        
+//        
     }
 
 }

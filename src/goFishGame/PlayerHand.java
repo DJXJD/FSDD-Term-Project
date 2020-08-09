@@ -58,7 +58,9 @@ public class PlayerHand extends GroupOfCards {
         int lineSize = 5;
         
         // sorts the cards before displaying them
-        sortCardList();
+        if(getCardList().size()>0){
+            sortCardList();
+        }
         
         // adds all cards to a string to be displayed
         for (Card card : getCardList()) {
