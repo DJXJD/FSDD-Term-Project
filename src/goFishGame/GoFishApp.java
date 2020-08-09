@@ -16,12 +16,13 @@ public class GoFishApp {
 
     public static void main(String[] args) {
 
-//        //testing deck building
-//        Deck testDeck = new Deck();
-//        testDeck.buildDeck();
-//        System.out.println(testDeck.showCards());
-//        System.out.println();
-//        
+        //testing deck building
+        Deck testDeck = new Deck();
+        testDeck.buildDeck();
+        testDeck.shuffle();
+        System.out.println(testDeck.showCards());
+        System.out.println();
+        
 //        //testing card draws
 //        System.out.println(testDeck.getCardList().get(0));
 //        System.out.println(testDeck.drawCard());
@@ -39,6 +40,9 @@ public class GoFishApp {
 //        
 //        for (int i = 0; i < nicksHand.getCardListSize(); i++) {
 //            nicksHand.AddCard(testDeck.drawCard());
+//        }
+        
+        
     }
 
 }
