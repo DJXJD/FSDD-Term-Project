@@ -13,7 +13,7 @@ import java.util.ArrayList;
  * This class <enter description>
  * @author Nick De Luca
  */
-public class Deck extends Hand{
+public class Deck extends GroupOfCards{
 
     public Deck() {
     }
@@ -97,7 +97,7 @@ public class Deck extends Hand{
     public String toString() {
         String s = "";
         for (Card c : this.getHand()) {
-            s += c.getValue().getName() + " of " + c.getSuit().getName() + "\n";
+            s += c.toString() + "\n";
         }
         return s;
     }

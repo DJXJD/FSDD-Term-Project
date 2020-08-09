@@ -44,7 +44,7 @@ public class Card {
     @Override
     public String toString() {
         
-        return String.format("%5s of %-10s[%s]",value.getName(), suit.getName(),this.getSuit().getSymbol());
+        return String.format("%5s of %-10s[%s] ",value.getName(), suit.getName(),this.getSuit().getSymbol());
     }
 
 }

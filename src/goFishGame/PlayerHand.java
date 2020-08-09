@@ -12,7 +12,7 @@ import goFishGame.Card;
  * This class <enter description>
  * @author Nick De Luca
  */
-public class PlayerHand extends Hand {
+public class PlayerHand extends GroupOfCards {
 
     public PlayerHand() {
     }

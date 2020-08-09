@@ -13,15 +13,15 @@ import java.util.ArrayList;
  * This class <enter description>
  * @author Nick De Luca
  */
-public abstract class Hand{
+public abstract class GroupOfCards{
 
     private ArrayList<Card> hand = new ArrayList();
     private int handSizeLimit;
 
-    public Hand() {
+    public GroupOfCards() {
     }
     
-    public Hand(int handSizeLimit) {
+    public GroupOfCards(int handSizeLimit) {
         setHandSizeLimit(handSizeLimit);
     }
 
