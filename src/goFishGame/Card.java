@@ -63,7 +63,7 @@ public class Card {
     public String toString() {
         
         return String.format(""
-		+ "%5s of %-8s [%s]",
+		+ "%-5s of %-8s [%s]",
 		getRankName(),
 		getSuitName(),
 		getSuitSymbol());

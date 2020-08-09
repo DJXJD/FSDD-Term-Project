@@ -30,21 +30,18 @@ public class PlayerHand extends GroupOfCards {
 
     @Override
     public String showCards() {
-        String showHand = "";
-        String spaceFormat = "|%s%8s|"; 
-        showHand += "\n";
-        for (int i = 0; i < this.getCardList().size(); i++) {
-           showHand += "___________\n";
-            if(this.getCardList().get(i).getRankNum()==10)
-                spaceFormat = "|%s%7s|";
-            else
-                spaceFormat = "|%s%8s|"; 
-           showHand += String.format(spaceFormat,this.getCardList().get(i).getRankShortName(),this.getCardList().get(i).getSuitSymbol())+"\n";     
-           showHand += "|         |\n";
-           showHand += "|         |\n";
-           showHand += "|         |\n";
-           showHand += "\u203E\u203E\u203E\u203E\u203E\u203E\u203E\u203E\u203E\u203E\u203E\u203E\u203E\u203E\u203E\n";
-        }  
+        String showHand = "| "; 
+        int count = 0;
+        int lineSize = 5;
+        sortCardList();
+        for (Card card : getCardList()) {
+            showHand += card.toString() + " | ";
+            count++;
+            if (count == lineSize) {
+                lineSize += 5;
+                showHand += "\n\n| ";
+            }
+        }
         
         return showHand;
     }
