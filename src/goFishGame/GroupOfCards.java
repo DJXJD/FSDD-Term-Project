@@ -17,6 +17,13 @@ public abstract class GroupOfCards{
 
     private ArrayList<Card> cardList = new ArrayList();
     private int cardListSize;
+    
+    /**
+     * The empty abstract constructor for a group of cards
+     */
+    public GroupOfCards() {
+    }
+    
     /**
      * The abstract constructor that defines a cardListSize
      * @param cardListSize 

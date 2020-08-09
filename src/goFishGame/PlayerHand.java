@@ -11,7 +11,7 @@ package goFishGame;
  * @author Nick De Luca
  */
 public class PlayerHand extends GroupOfCards {
-
+    
     public PlayerHand() {
     }
 

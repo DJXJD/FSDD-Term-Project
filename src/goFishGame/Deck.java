@@ -8,7 +8,6 @@
 package goFishGame;
 
 import java.util.ArrayList;
-
 /**
  * This class defines the decks properties and attributes
  *
