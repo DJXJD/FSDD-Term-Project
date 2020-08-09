@@ -1,6 +1,5 @@
 package goFishGame;
 
-import goFishGame.Card;
 import java.util.ArrayList;
 
 /**
@@ -13,7 +12,7 @@ public class Player {
     private PlayerHand hand; //delegation
     private int score;
 
-    public Player(String name,PlayerHand hand) {
+    public Player(String name, PlayerHand hand) {
         this.name = name;
         this.hand = hand;
     }
@@ -23,7 +22,7 @@ public class Player {
     }
    
     public ArrayList<Card> getHand() {
-        return hand.getHand(); //delegation
+        return hand.getCardList(); //delegation
     }
 
     public String getName(){
@@ -46,22 +45,22 @@ public class Player {
             }
         }
         if(cardCount == 4){
-            hand.removeFromHand(card);
+            hand.removeCard(card);
             score++;
         }
     }
     //adds a card to the player's hand instance var object
     public boolean addToHand(Card card){ //delegation
         
-        return hand.addToHand(card);
+        return hand.AddCard(card);
     }   
     public boolean removeFromHand(Card card){ //delegation
         
-        return hand.removeFromHand(card);
+        return hand.removeCard(card);
     } 
     public boolean checkHand(Card card){ //delegation
         
-        return hand.checkHand(card);
+        return hand.checkCards(card);
     } 
     
     @Override

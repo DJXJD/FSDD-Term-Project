@@ -26,7 +26,7 @@ public class Deck extends GroupOfCards{
     //deal 
     
     public void buildDeck() {
-        super.setHandSizeLimit(52);
+        super.setCardListSize(52);
         ArrayList<Card> deck = new ArrayList();
         for (Rank r : Rank.values()) {
             for (Suit s : Suit.values()) {
@@ -34,40 +34,40 @@ public class Deck extends GroupOfCards{
                 deck.add(new Card(r, s));
             }
         }
-        this.setHand(deck);
+        setCardList(deck);
     }
     
     public void shuffle() {
             
-        Card card = this.getHand().get(0);
-        for (int i = 0; i < this.getHand().size(); i++) {
+        Card card = this.getCardList().get(0);
+        for (int i = 0; i < this.getCardList().size(); i++) {
 
-            for (int j = 1; j < this.getHand().size(); j++) {
+            for (int j = 1; j < this.getCardList().size(); j++) {
                 int x = (int)(Math.random() * i);
-                    card = this.getHand().get(j);
-                    this.getHand().remove(j);
-                    this.getHand().add(x,card);
+                    card = this.getCardList().get(j);
+                    this.getCardList().remove(j);
+                    this.getCardList().add(x,card);
             }
         }
     }
     
     //returns the first card in the list and removes it from the deck
     public Card drawCard() {
-        Card draw = this.getHand().get(0);
-        this.removeFromHand(this.getHand().get(0));
+        Card draw = this.getCardList().get(0);
+        this.removeCard(this.getCardList().get(0));
         return draw;
     }
 
     @Override
-    public String showHand() {
+    public String showCards() {
         String showHand = "";
-        this.sortHand();
+        this.sortCardList();
         int count = 0;
         int lineSize = 13;
         for (int i = 0; i < 4; i++) {
-            for (int j = i; j < this.getHand().size(); j+=4) {
+            for (int j = i; j < this.getCardList().size(); j+=4) {
             
-            showHand += this.getHand().get(j).toString() + " "; 
+            showHand += this.getCardList().get(j).toString() + " "; 
             count++;
             if(count == lineSize){
                 showHand += "\n";
@@ -78,24 +78,23 @@ public class Deck extends GroupOfCards{
         return showHand;
     }
     
-    public boolean checkHand(Card card){
-        for (Card c : this.getHand()) {
+    public boolean checkCards(Card card){
+        for (Card c : this.getCardList()) {
            
             if(c.getSuitName().equalsIgnoreCase(card.getSuitName()) 
                     && c.getRankNum() == card.getRankNum()){
-                this.getHand().remove(c);
+                this.getCardList().remove(c);
                 return true;
             }
         }
         return false;
     }
     
-    
     //toString used mostly for testing funcionality
     @Override
     public String toString() {
         String s = "";
-        for (Card c : this.getHand()) {
+        for (Card c : this.getCardList()) {
             s += c.toString() + "\n";
         }
         return s;

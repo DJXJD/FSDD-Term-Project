@@ -6,8 +6,6 @@
 
 package goFishGame;
 
-import goFishGame.Card;
-
 /**
  * This class <enter description>
  * @author Nick De Luca
@@ -21,6 +19,7 @@ public class PlayerHand extends GroupOfCards {
         super(handSize);
     }
 
+    //functinality will be implemented in game class
     public String hideHand(){
         String hideHand = " ";
         for (int i = 0; i < 30; i++) {
@@ -30,17 +29,17 @@ public class PlayerHand extends GroupOfCards {
     }   
 
     @Override
-    public String showHand() {
+    public String showCards() {
         String showHand = "";
         String spaceFormat = "|%s%8s|"; 
         showHand += "\n";
-        for (int i = 0; i < this.getHand().size(); i++) {
+        for (int i = 0; i < this.getCardList().size(); i++) {
            showHand += "___________\n";
-            if(this.getHand().get(i).getRankNum()==10)
+            if(this.getCardList().get(i).getRankNum()==10)
                 spaceFormat = "|%s%7s|";
             else
                 spaceFormat = "|%s%8s|"; 
-           showHand += String.format(spaceFormat,this.getHand().get(i).getRankShortName(),this.getHand().get(i).getSuitSymbol())+"\n";     
+           showHand += String.format(spaceFormat,this.getCardList().get(i).getRankShortName(),this.getCardList().get(i).getSuitSymbol())+"\n";     
            showHand += "|         |\n";
            showHand += "|         |\n";
            showHand += "|         |\n";
@@ -50,13 +49,14 @@ public class PlayerHand extends GroupOfCards {
         return showHand;
     }
 
+    //make this better
     @Override
     public String toString() {
-        return "hand=" + this.getHand();
+        return "hand=" + this.getCardList();
     }
 
-    public boolean checkHand(Card card) {
-        for (Card c : this.getHand()) {
+    public boolean checkCards(Card card) {
+        for (Card c : this.getCardList()) {
            
             if(c.getRankNum()==card.getRankNum()){
                 return true;
