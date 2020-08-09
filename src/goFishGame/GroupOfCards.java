@@ -1,36 +1,54 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
+    GroupOfCards.java
+    Author: Nick De Luca, David Vejgman, Daniel Crawford
+    Date: August 9th 2020
+    Description
+    This abstract class defines the properties and attributes of a group of cards
+*/
 package goFishGame;
 
 import java.util.ArrayList;
 
 /**
- * This class <enter description>
+ * This abstract class defines a group of cards
  * @author Nick De Luca
  */
 public abstract class GroupOfCards{
 
     private ArrayList<Card> cardList = new ArrayList();
     private int cardListSize;
-
+    
+    /**
+     * The empty abstract constructor for a group of cards
+     */
     public GroupOfCards() {
     }
     
+    /**
+     * The abstract constructor that defines a cardListSize
+     * @param cardListSize 
+     */
     public GroupOfCards(int cardListSize) {
         setCardListSize(cardListSize);
     }
-
+    /**
+     * gets the card list of a group of cards object
+     * @return the card list
+     */
     public ArrayList<Card> getCardList() {
         return cardList;
     }
+    /**
+     * This method sets the card list of a group of cards object
+     * @param cardList the given ArrayList to set
+     */ 
      public void setCardList(ArrayList<Card> cardList) {
         this.cardList = cardList;
     }
-     
+    /**
+     * This method sorts a card list by rank. Lowest to highest.
+     * @return the sorted card list
+     */
     public ArrayList<Card> sortCardList(){
         Card lowest = cardList.get(0);
         for (int i = 0; i < cardList.size(); i++) {
@@ -45,7 +63,10 @@ public abstract class GroupOfCards{
         }
         return cardList;
     }
-    
+    /**
+     * sets the card list size of a group of cards object
+     * @param cardListSize the given size to set
+     */
     public void setCardListSize(int cardListSize){
         if(cardListSize>0){
             this.cardListSize = cardListSize;
@@ -53,31 +74,36 @@ public abstract class GroupOfCards{
             throw new IllegalArgumentException("Hand Size must be positive");
         }
     }
-    
+    /**
+     * gets the card list size of a group of cards object.
+     * @return the card list size 
+     */
     public int getCardListSize(){
         return cardListSize;
     }
-    
-    //returns true or false if remove was successful(j.e. if the player has the card or not)
-   
-    
-    //adds a card to the player's cardList instance var object
-    //returns true if you can add a card
-    //returns false if the cardList is full
-    //u can change the return to void if needed, j just thought it might be useful.
-    
-    //to implement
+    /**
+     * This method adds a card object to the card list of a group of cards
+     * @param card the given card to add to the card list
+     * @return true if add was successful (ArrayList.add())
+     */
     public boolean AddCard(Card card){
             return cardList.add(card);
     }
-    
-     public boolean removeCard(Card card) {
+    /**
+     * This method removes a card object to the card list of a group of cards
+     * @param card the given card to remove to the card list
+     * @return true if remove was successful (ArrayList.add())
+     */
+    public boolean removeCard(Card card) {
         
         return cardList.remove(card);
     }
-    
+    /**
+     * This abstract method that is overrided to show a group of cards 
+     * @return a string that organizes a group of cards
+     */
     public abstract String showCards();
-    
+   
     public abstract boolean checkCards(Card card);
  
 }

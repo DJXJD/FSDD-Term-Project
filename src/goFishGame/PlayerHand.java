@@ -3,15 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package goFishGame;
 
 /**
  * This class <enter description>
+ *
  * @author Nick De Luca
  */
 public class PlayerHand extends GroupOfCards {
-
+    
     public PlayerHand() {
     }
 
@@ -20,32 +20,29 @@ public class PlayerHand extends GroupOfCards {
     }
 
     //functinality will be implemented in game class
-    public String hideHand(){
+    public String hideHand() {
         String hideHand = " ";
         for (int i = 0; i < 30; i++) {
-            hideHand += ""+"\n";
+            hideHand += "" + "\n";
         }
         return hideHand;
-    }   
+    }
 
     @Override
     public String showCards() {
-        String showHand = "";
-        String spaceFormat = "|%s%8s|"; 
-        showHand += "\n";
-        for (int i = 0; i < this.getCardList().size(); i++) {
-           showHand += "___________\n";
-            if(this.getCardList().get(i).getRankNum()==10)
-                spaceFormat = "|%s%7s|";
-            else
-                spaceFormat = "|%s%8s|"; 
-           showHand += String.format(spaceFormat,this.getCardList().get(i).getRankShortName(),this.getCardList().get(i).getSuitSymbol())+"\n";     
-           showHand += "|         |\n";
-           showHand += "|         |\n";
-           showHand += "|         |\n";
-           showHand += "\u203E\u203E\u203E\u203E\u203E\u203E\u203E\u203E\u203E\u203E\u203E\u203E\u203E\u203E\u203E\n";
-        }  
-        
+        String showHand = "| ";
+        int count = 0;
+        int lineSize = 5;
+        sortCardList();
+        for (Card card : getCardList()) {
+            showHand += card.toString() + " | ";
+            count++;
+            if (count == lineSize) {
+                lineSize += 5;
+                showHand += "\n\n| ";
+            }
+        }
+
         return showHand;
     }
 
@@ -57,11 +54,29 @@ public class PlayerHand extends GroupOfCards {
 
     public boolean checkCards(Card card) {
         for (Card c : this.getCardList()) {
-           
-            if(c.getRankNum()==card.getRankNum()){
+
+            if (c.getRankNum() == card.getRankNum()) {
                 return true;
             }
         }
         return false;
-       }
+    }
+    
+    public int indexOf(Card card) {
+        for (int i = 0; i < getCardList().size(); i++) {
+            if (card == getCardList().get(i)) {
+                return i;
+            }
+        }
+        return -1;
+    }
+    
+    public int indexOf(Rank rank) {
+        for (int i = 0; i < getCardList().size(); i++) {
+            if (getCardList().get(i).getRankNum() == rank.getNum()) {
+                return i;
+            }
+        }
+        return -1;
+    }
 }
