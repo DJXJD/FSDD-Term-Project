@@ -81,8 +81,8 @@ public class Deck extends GroupOfCards{
     public boolean checkHand(Card card){
         for (Card c : this.getHand()) {
            
-            if(c.getSuit().getName().equalsIgnoreCase(card.getSuit().getName()) 
-                    && c.getRank().getNum() == card.getRank().getNum()){
+            if(c.getSuitName().equalsIgnoreCase(card.getSuitName()) 
+                    && c.getRankNum() == card.getRankNum()){
                 this.getHand().remove(c);
                 return true;
             }
