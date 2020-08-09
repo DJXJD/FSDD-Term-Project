@@ -3,11 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package goFishGame;
 
 /**
  * This class <enter description>
+ *
  * @author Nick De Luca
  */
 public class PlayerHand extends GroupOfCards {
@@ -20,17 +20,17 @@ public class PlayerHand extends GroupOfCards {
     }
 
     //functinality will be implemented in game class
-    public String hideHand(){
+    public String hideHand() {
         String hideHand = " ";
         for (int i = 0; i < 30; i++) {
-            hideHand += ""+"\n";
+            hideHand += "" + "\n";
         }
         return hideHand;
-    }   
+    }
 
     @Override
     public String showCards() {
-        String showHand = "| "; 
+        String showHand = "| ";
         int count = 0;
         int lineSize = 5;
         sortCardList();
@@ -42,7 +42,7 @@ public class PlayerHand extends GroupOfCards {
                 showHand += "\n\n| ";
             }
         }
-        
+
         return showHand;
     }
 
@@ -54,11 +54,29 @@ public class PlayerHand extends GroupOfCards {
 
     public boolean checkCards(Card card) {
         for (Card c : this.getCardList()) {
-           
-            if(c.getRankNum()==card.getRankNum()){
+
+            if (c.getRankNum() == card.getRankNum()) {
                 return true;
             }
         }
         return false;
-       }
+    }
+    
+    public int indexOf(Card card) {
+        for (int i = 0; i < getCardList().size(); i++) {
+            if (card == getCardList().get(i)) {
+                return i;
+            }
+        }
+        return -1;
+    }
+    
+    public int indexOf(Rank rank) {
+        for (int i = 0; i < getCardList().size(); i++) {
+            if (getCardList().get(i).getRankNum() == rank.getNum()) {
+                return i;
+            }
+        }
+        return -1;
+    }
 }
