@@ -72,7 +72,7 @@ public class Player {
      * This method adds the 1 to a players score field. 
      */
     public void addToScore(){
-        this.score += 1;
+        score += 1;
     }
     /**
      * This method check if there are any 4 of a kinds in the players hand at 
@@ -111,10 +111,14 @@ public class Player {
      * @param card  the card to remove from the hand
      * @return false if removing the card failed
      */
-    public boolean removeFromHand(Card card){ //delegation
-        
+    public boolean removeCard(Card card){ //delegation
         return hand.removeCard(card);
-    } 
+    }
+    
+    public void removeCard(int index) {
+	hand.removeCard(index);
+    }
+    
     /**
      * This method delegates checking a hand if it contains a card
      * from the GroupOfCards class,to the Player class

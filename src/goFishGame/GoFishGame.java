@@ -11,6 +11,7 @@ package goFishGame;
  */
 public class GoFishGame {
     
+    private boolean finished = false;
     private int numPlayers;
     private int activePlayer = 0;
     private Player[] players;
@@ -22,6 +23,10 @@ public class GoFishGame {
 	} else {
 	    throw new IllegalArgumentException("A game must have 2-5 players");
 	}
+    }
+
+    public boolean isFinished() {
+	return finished;
     }
 
     public int getNumPlayers() {
@@ -86,6 +91,13 @@ public class GoFishGame {
 	    }
 	}
 	return null;
+    }
+    
+    public void tradeMatch4Score(Rank rank) {
+	for (int i = 0; i < 4; i ++) {
+	    players[activePlayer].removeCard(players[activePlayer].hasCard(rank));
+	}
+	players[activePlayer].addToScore();
     }
     
     public void initialDeal(int numCardsPerPlayer) {

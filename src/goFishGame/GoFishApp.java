@@ -68,16 +68,20 @@ public class GoFishApp {
 //        System.out.println(nicksHand.showCards());
 ////        
 	
-	GoFishGame game = new GoFishGame(3);
+	GoFishGame game = new GoFishGame(5);
 	game.init();
-	System.out.println(game.getDeck());
-	for (int i = 0; i < 3; i ++) {
+	game.getPlayers()[0].addToHand(new Card(Rank.ACE, Suit.CLUBS));
+	game.getPlayers()[0].addToHand(new Card(Rank.ACE, Suit.CLUBS));
+	game.getPlayers()[0].addToHand(new Card(Rank.ACE, Suit.CLUBS));
+	game.getPlayers()[0].addToHand(new Card(Rank.ACE, Suit.CLUBS));
+	game.getPlayers()[0].addToHand(new Card(Rank.ACE, Suit.CLUBS));
+	for (int i = 0; i < 5; i ++) {
 	    System.out.println(game.getPlayers()[i]);
 	}
-	game.initialDeal(3);
-	System.out.println(game.getDeck());
-	for (int i = 0; i < 3; i ++) {
-	    System.out.println(game.getPlayers()[i]);
+	if (game.has4Match() != null) {
+	    System.out.println(game.has4Match().getName());
+	    game.tradeMatch4Score(game.has4Match());
+	    System.out.println(game.getPlayers()[0]);
 	}
 
     }
