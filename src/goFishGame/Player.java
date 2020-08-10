@@ -50,6 +50,10 @@ public class Player {
 	return hand;
     }
     
+    public int getHandSize() {
+	return hand.getCardListSize();
+    }
+    
     /**
      * gets the name field of a player object 
      * @return the name of a player
@@ -86,7 +90,7 @@ public class Player {
         if(cardCount == 4){
             addToScore();
             for (int i = 1; i <= 4; i++) {
-                    System.out.println("removed a card at: " + i);
+                    //System.out.println("removed a card at: " + i);
                     hand.removeCard(card);
                 }
             } 
@@ -120,6 +124,10 @@ public class Player {
     public boolean checkHand(Card card){ //delegation
         
         return hand.checkCards(card);
+    }
+    
+    public Card getCard(int index) {
+	return hand.getCard(index);
     }
     
     public int hasCard(Rank rank) {

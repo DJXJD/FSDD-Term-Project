@@ -73,6 +73,21 @@ public class GoFishGame {
 	moveCard(deck, 0, players[activePlayer].getHand());
     }
     
+    public Rank has4Match() {
+	for (Card i : players[activePlayer].getHandCardList()) {
+	    int matches = 0;
+	    for (Card j : players[activePlayer].getHandCardList()) {
+		if (i.getRank().equals(j.getRank())) {
+		    matches ++;
+		}
+	    }
+	    if (matches >= 4) {
+		return i.getRank();
+	    }
+	}
+	return null;
+    }
+    
     public void initialDeal(int numCardsPerPlayer) {
 	for (int i = 0; i < numCardsPerPlayer; i ++) {
 	    for (int j = 0; j < numPlayers; j ++) {

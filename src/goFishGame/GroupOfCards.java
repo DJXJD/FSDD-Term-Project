@@ -80,9 +80,14 @@ public abstract class GroupOfCards{
      * gets the card list size of a group of cards object.
      * @return the card list size 
      */
-    public int getCardListSize(){
+    public int getCardListSizeField(){
         return cardListSize;
     }
+    
+    public int getCardListSize() {
+	return cardList.size();
+    }
+    
     /**
      * This method adds a card object to the card list of a group of cards
      * @param card the given card to add to the card list

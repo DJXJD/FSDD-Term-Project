@@ -31,6 +31,11 @@ public class Card {
         this.rank = value;
         this.suit = suit;
     }
+
+    public Rank getRank() {
+	return rank;
+    }
+    
     /**
      * This method returns the numerical value of the rank of the card
      * @return the numerical value of the rank
@@ -56,8 +61,13 @@ public class Card {
      * This method returns the numerical value of the suit of the card
      * @return the numerical value of the suit
      */
+    
+    public Suit getSuit() {
+        return suit;
+    }
+
     public int getSuitNum() {
-        return suit.getNum();
+	return suit.getNum();
     }
     /**
      * This method returns the name of the suit of the card
