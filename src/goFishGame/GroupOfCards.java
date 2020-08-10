@@ -127,8 +127,8 @@ public abstract class GroupOfCards{
      * @return the index of the first card of that rank or -1
      */
     public int indexOf(Rank rank) {
-        for (int i = 0; i < getCardList().size(); i++) {
-            if (getCardList().get(i).getRankNum() == rank.getNum()) {
+        for (int i = 0; i < cardList.size(); i++) {
+            if (cardList.get(i).getRankNum() == rank.getNum()) {
                 return i;
             }
         }

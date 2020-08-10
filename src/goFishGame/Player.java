@@ -120,7 +120,16 @@ public class Player {
     public boolean checkHand(Card card){ //delegation
         
         return hand.checkCards(card);
-    } 
+    }
+    
+    public int hasCard(Rank rank) {
+	return hand.indexOf(rank);
+    }
+    
+    public int hasCard(Card card) {
+	return hand.indexOf(card);
+    }
+    
     /**
      * The tostring method of the Player object concatenates a string of all the 
      * Player's fields.

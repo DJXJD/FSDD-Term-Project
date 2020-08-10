@@ -12,6 +12,7 @@ package goFishGame;
 public class GoFishGame {
     
     private int numPlayers;
+    private int activePlayer = 0;
     private Player[] players;
     private Deck deck;
 
@@ -25,6 +26,10 @@ public class GoFishGame {
 
     public int getNumPlayers() {
 	return numPlayers;
+    }
+
+    public int getActivePlayer() {
+	return activePlayer;
     }
 
     public Player[] getPlayers() {
@@ -48,6 +53,24 @@ public class GoFishGame {
 	} else {
 	    initialDeal(5);
 	}
+    }
+    
+    public boolean askForCard(int target, Rank rank) {
+	if (players[activePlayer].hasCard(rank) == -1) {
+	    throw new IllegalArgumentException("Player must have at least one of the cards they are asking for");
+	}
+	if (players[target].hasCard(rank) != -1) {
+	    while (players[target].hasCard(rank) != -1) {
+		moveCard(players[target].getHand(), players[target].hasCard(rank), players[activePlayer].getHand());
+	    }
+	    return true;
+	}
+	goFish();
+	return false;
+    }
+    
+    public void goFish() {
+	moveCard(deck, 0, players[activePlayer].getHand());
     }
     
     public void initialDeal(int numCardsPerPlayer) {
