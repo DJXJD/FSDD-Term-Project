@@ -42,9 +42,14 @@ public class Player {
      * gets the player's hand ArrayList field
      * @return an ArrayList of the players hand
      */
-    public ArrayList<Card> getHand() {
+    public ArrayList<Card> getHandCardList() {
         return hand.getCardList(); //delegation
     }
+
+    public PlayerHand getHand() {
+	return hand;
+    }
+    
     /**
      * gets the name field of a player object 
      * @return the name of a player
@@ -73,7 +78,7 @@ public class Player {
      */
     public void checkScore(Card card){
         int cardCount = 0;
-        for (Card c : this.getHand()) {
+        for (Card c : this.getHandCardList()) {
             if(c.getRankNum()==card.getRankNum()){
                     cardCount++;
             }

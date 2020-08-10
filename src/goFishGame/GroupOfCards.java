@@ -100,6 +100,41 @@ public abstract class GroupOfCards{
         
         return cardList.remove(card);
     }
+    
+    public void removeCard(int index) {
+	cardList.remove(index);
+    }
+    
+    public Card getCard(int index) {
+	return cardList.get(index);
+    }
+    
+    /**
+     * This method searches the hand for a specific card and returns the index
+     * of that card in the PlayerHand or -1 if it does not exist
+     * @param card the card to search for
+     * @return the index of the card, -1 if it is not in the PlayerHand
+     */
+    public int indexOf(Card card) {
+        return cardList.indexOf(card);
+    }
+    
+    /**
+     * This method searches the PlayerHand for any card of a specified rank and
+     * returns the index of the first iteration of that rank or -1 if no card
+     * with that rank is in the PlayerHand
+     * @param rank the rank to be searched for
+     * @return the index of the first card of that rank or -1
+     */
+    public int indexOf(Rank rank) {
+        for (int i = 0; i < getCardList().size(); i++) {
+            if (getCardList().get(i).getRankNum() == rank.getNum()) {
+                return i;
+            }
+        }
+        return -1;
+    }
+    
     /**
      * This abstract method that is overrided to show a group of cards 
      * @return a string that organizes a group of cards

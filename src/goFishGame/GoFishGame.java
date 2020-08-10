@@ -38,16 +38,30 @@ public class GoFishGame {
     public void init() {
 	players = new Player[numPlayers];
 	for (int i = 0; i < numPlayers; i ++) {
-	    players[i] = new Player("player" + i + 1, new PlayerHand());
+	    players[i] = new Player("player" + ( i + 1 ), new PlayerHand());
 	}
 	deck = new Deck();
 	deck.buildDeck();
 	deck.shuffle();
-	//to add more
+	if (numPlayers == 2) {
+	    initialDeal(7);
+	} else {
+	    initialDeal(5);
+	}
     }
     
-    public void moveCard(GroupOfCards src, GroupOfCards dest) {
-	
+    public void initialDeal(int numCardsPerPlayer) {
+	for (int i = 0; i < numCardsPerPlayer; i ++) {
+	    for (int j = 0; j < numPlayers; j ++) {
+		moveCard(deck, 0, players[j].getHand());
+	    }
+	}
+    }
+    
+    public void moveCard(GroupOfCards src, int index, GroupOfCards dest) {
+	Card card = src.getCard(index);
+	src.removeCard(index);
+	dest.AddCard(card);
     }
     
 }
