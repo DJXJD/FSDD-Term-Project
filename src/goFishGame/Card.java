@@ -6,8 +6,7 @@
     This file creates card objects that use enumeration values from two
     enumerations, one for the rank and one for the suit, and can be used to
     create any card that would normally exist in a standard deck of cards
-*/
-
+ */
 package goFishGame;
 
 /**
@@ -21,9 +20,10 @@ public class Card {
     //these are the properties of the card class
     private Rank rank;
     private Suit suit;
-    
+
     /**
      * The constructor for the card class creates a card with a rank and suit
+     *
      * @param value the value of the rank of the card
      * @param suit the suit of the card
      */
@@ -32,69 +32,89 @@ public class Card {
         this.suit = suit;
     }
 
+    /**
+     * This method returns a rank object of this card object
+     * @return the rank of this card
+     */
     public Rank getRank() {
-	return rank;
+        return rank;
     }
-    
+
     /**
      * This method returns the numerical value of the rank of the card
+     *
      * @return the numerical value of the rank
      */
     public int getRankNum() {
         return rank.getNum();
     }
+
     /**
      * This method returns the name of the rank of the card
+     *
      * @return the name of the rank
      */
     public String getRankName() {
         return rank.getName();
     }
+
     /**
      * This method returns the short version of the name of the rank of the card
+     *
      * @return the short name of the rank
      */
     public String getRankShortName() {
         return rank.getShortName();
     }
+
     /**
-     * This method returns the numerical value of the suit of the card
-     * @return the numerical value of the suit
+     * This method returns a suit object of a card
+     * @return the suit object of this card
      */
-    
     public Suit getSuit() {
         return suit;
     }
 
+    /**
+     * This method returns the numerical value of the suit of the card
+     *
+     * @return the numerical value of the suit
+     */
     public int getSuitNum() {
-	return suit.getNum();
+        return suit.getNum();
     }
+
     /**
      * This method returns the name of the suit of the card
+     *
      * @return the name of the suit
      */
     public String getSuitName() {
         return suit.getName();
     }
+
     /**
      * This method returns the symbol of the suit of the card
+     *
      * @return the symbol of the suit
      */
     public char getSuitSymbol() {
         return suit.getSymbol();
     }
+
     /**
      * This method returns a formatted string of all the values of the card
+     *
      * @return a formatted string of the values of the card
      */
     @Override
     public String toString() {
-        
+
         return String.format(""
-		+ "%-5s of %-8s [%s]",
-		getRankName(),
-		getSuitName(),
-		getSuitSymbol());
+                + "%-5s of %-8s [%s]",
+                getRankName(),
+                getSuitName(),
+                getSuitSymbol());
     }
 
 }

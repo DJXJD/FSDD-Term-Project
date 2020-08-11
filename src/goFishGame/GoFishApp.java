@@ -12,60 +12,60 @@ import java.util.Scanner;
  * @date june 14th 2020
  */
 public class GoFishApp {
-    
+
     private GoFishGame game;
-    
+
     private GoFishApp(GoFishGame game) {
-	if (game != null) {
-	    this.game = game;
-	} else {
-	    throw new IllegalArgumentException("The app's game cannot be null");
-	}
+        if (game != null) {
+            this.game = game;
+        } else {
+            throw new IllegalArgumentException("The app's game cannot be null");
+        }
     }
-    
+
     public void announceTurn() {
-	System.out.println("It is now " + game.getActivePlayer().getName() + "'s turn\n"
-		+ "Press Enter when ready to pass them the machine");
-	waitForEnter();
-	clearConsole();
-	System.out.println("Hello " + game.getActivePlayer().getName() + "!\n"
-		+ "Press Enter when ready to begin your turn");
-	waitForEnter();
+        System.out.println("It is now " + game.getActivePlayer().getName() + "'s turn\n"
+                + "Press Enter when ready to pass them the machine");
+            waitForEnter();
+        clearConsole();
+        System.out.println("Hello " + game.getActivePlayer().getName() + "!\n"
+                + "Press Enter when ready to begin your turn");
+        waitForEnter();
     }
-    
+
     public void waitForEnter() {
-	Scanner emptyScanner = new Scanner(System.in);
-	emptyScanner.nextLine();
+        Scanner emptyScanner = new Scanner(System.in);
+        emptyScanner.nextLine();
     }
-    
+
     public void clearConsole() {
-	for (int i = 0; i < 50; i ++) {
-	    System.out.println("");
-	}
+        for (int i = 0; i < 50; i++) {
+            System.out.println("");
+        }
     }
-    
+
     public static GoFishGame createGameObject(Scanner scanner) {
-	System.out.print("Enter the number of players for the game: ");
-	GoFishGame game = null;
-	try {
-	    game = new GoFishGame(scanner.nextInt());
-	} catch (IllegalArgumentException e) {
-	    System.out.println(e.getMessage());
-	    game = createGameObject(scanner);
-	} catch (InputMismatchException e) {
-	    System.out.println("The number of players must be a whole number");
-	    scanner.nextLine();
-	    game = createGameObject(scanner);
-	}
-	return game;
+        System.out.print("Enter the number of players for the game: ");
+        GoFishGame game = null;
+        try {
+            game = new GoFishGame(scanner.nextInt());
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+            game = createGameObject(scanner);
+        } catch (InputMismatchException e) {
+            System.out.println("The number of players must be a whole number");
+            scanner.nextLine();
+            game = createGameObject(scanner);
+        }
+        return game;
     }
 
     public static void main(String[] args) {
-	Scanner scanner = new Scanner(System.in);
-	GoFishApp gameApp = new GoFishApp(createGameObject(scanner));
-	gameApp.game.init();
-	System.out.println("\nWelcome, the " + gameApp.game.getNumPlayers() + " of you, to our Go Fish game!\n");
-	gameApp.announceTurn();
+        Scanner scanner = new Scanner(System.in);
+        GoFishApp gameApp = new GoFishApp(createGameObject(scanner));
+        gameApp.game.init();
+        System.out.println("\nWelcome, the " + gameApp.game.getNumPlayers() + " of you, to our Go Fish game!\n");
+        gameApp.announceTurn();
 //	while (!gameApp.game.isFinished()) {
 //	    
 //	}

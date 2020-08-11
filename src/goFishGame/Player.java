@@ -46,10 +46,18 @@ public class Player {
         return hand.getCardList(); //delegation
     }
 
+    /**
+     * This method returns the PlayerHand object of this Player object
+     * @return the PlayerHand of this Player
+     */
     public PlayerHand getHand() {
 	return hand;
     }
     
+    /**
+     * This method returns the hand size of the Player's hand
+     * @return the size of the Player's hand
+     */
     public int getHandSize() {
 	return hand.getCardListSize();
     }
@@ -115,6 +123,10 @@ public class Player {
         return hand.removeCard(card);
     }
     
+    /**
+     * This method removes a card of a specified index from a Player's hand
+     * @param index the index of the card to be removed
+     */
     public void removeCard(int index) {
 	hand.removeCard(index);
     }

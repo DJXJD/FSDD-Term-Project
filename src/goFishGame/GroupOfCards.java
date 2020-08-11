@@ -80,10 +80,6 @@ public abstract class GroupOfCards{
      * gets the card list size of a group of cards object.
      * @return the card list size 
      */
-    public int getCardListSizeField(){
-        return cardListSize;
-    }
-    
     public int getCardListSize() {
 	return cardList.size();
     }
@@ -106,10 +102,20 @@ public abstract class GroupOfCards{
         return cardList.remove(card);
     }
     
+    /**
+     * This method removes a card of a specified index from the GroupOfCards
+     * @param index the index of the card to be removed
+     */
     public void removeCard(int index) {
 	cardList.remove(index);
     }
     
+    /**
+     * This method returns a card object at a specified index of the 
+     * GroupOfCards
+     * @param index the index of the card
+     * @return the card from the specified index
+     */
     public Card getCard(int index) {
 	return cardList.get(index);
     }
@@ -146,6 +152,11 @@ public abstract class GroupOfCards{
      */
     public abstract String showCards();
    
+    /**
+     * 
+     * @param card
+     * @return 
+     */
     public abstract boolean checkCards(Card card);
  
 }
