@@ -1,6 +1,6 @@
 package goFishGame;
 
-import java.util.ArrayList;
+import java.util.Scanner;
 
 /**
  * A class that fills a magic hand of 7 cards with random Card Objects and then
@@ -11,79 +11,32 @@ import java.util.ArrayList;
  * @date june 14th 2020
  */
 public class GoFishApp {
+    
+    private GoFishGame game;
+    
+    private GoFishApp(GoFishGame game) {
+	if (game != null) {
+	    this.game = game;
+	} else {
+	    throw new IllegalArgumentException("The app's game cannot be null");
+	}
+    }
+    
+    public static GoFishGame createGameObject(Scanner scanner) {
+	System.out.print("Enter the number of players for the game: ");
+	GoFishGame game = null;
+	try {
+	    game = new GoFishGame(scanner.nextInt());
+	} catch (IllegalArgumentException e) {
+	    System.out.println(e.getMessage());
+	    game = createGameObject(scanner);
+	}
+	return game;
+    }
 
     public static void main(String[] args) {
-//
-//        //testing deck building
-//        Deck testDeck = new Deck();
-//        testDeck.buildDeck();
-//        testDeck.shuffle();
-//        System.out.println(testDeck.showCards());
-//        System.out.println();
-//        
-//        //testing card draws
-////        System.out.println(testDeck.getCardList().get(0));
-////        System.out.println(testDeck.drawCard());
-////        System.out.println(testDeck.getCardList().get(0));
-//        
-//        //testing the shuffle method
-////        testDeck.shuffle();
-////        System.out.println(testDeck);
-//        
-//        
-//        //make a player Hand
-//        PlayerHand nicksHand = new PlayerHand(4);//5 is the number of cards u want
-//        //make a player 
-//        Player p1 = new Player("Nick",nicksHand);
-//        Rank rank = Rank.ACE;
-//        Suit suit = Suit.CLUBS;
-//        Card card = new Card(rank,suit);
-//         nicksHand.AddCard(card);
-//         nicksHand.AddCard(card);
-//         nicksHand.AddCard(card);
-//         nicksHand.AddCard(card);
-//         //nicksHand.AddCard(new Card(Rank.EIGHT,Suit.DIAMONDS));
-//        
-//        p1.checkScore(card);
-//          ArrayList<Card> list = new ArrayList(6);
-//          
-//          for (int i = 0; i < 5; i++) {
-//            list.add(new Card(Rank.EIGHT,Suit.DIAMONDS));
-//            System.out.println(list.get(i));
-//        }
-//        list.remove(0);
-//          list.remove(0);
-//            list.remove(0);
-//              list.remove(0);
-//                list.remove(0);
-//              for (int i = 0; i < list.size(); i++) {
-//    
-//            System.out.println(list.get(i));
-//        }
-//          
-////         System.out.println(p1.getScore());
-////        for (int i = 0; i < nicksHand.getCardListSize(); i++) {
-////            nicksHand.AddCard(testDeck.drawCard());
-////        }
-//        System.out.println(nicksHand.showCards());
-////        
-	
-	GoFishGame game = new GoFishGame(5);
-	game.init();
-	game.getPlayers()[0].addToHand(new Card(Rank.ACE, Suit.CLUBS));
-	game.getPlayers()[0].addToHand(new Card(Rank.ACE, Suit.CLUBS));
-	game.getPlayers()[0].addToHand(new Card(Rank.ACE, Suit.CLUBS));
-	game.getPlayers()[0].addToHand(new Card(Rank.ACE, Suit.CLUBS));
-	game.getPlayers()[0].addToHand(new Card(Rank.ACE, Suit.CLUBS));
-	for (int i = 0; i < 5; i ++) {
-	    System.out.println(game.getPlayers()[i]);
-	}
-	if (game.has4Match() != null) {
-	    System.out.println(game.has4Match().getName());
-	    game.tradeMatch4Score(game.has4Match());
-	    System.out.println(game.getPlayers()[0]);
-	}
-
+	Scanner scanner = new Scanner(System.in);
+	GoFishApp gameApp = new GoFishApp(createGameObject(scanner));
     }
 
 }
