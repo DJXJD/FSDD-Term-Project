@@ -13,7 +13,7 @@ public class GoFishGame {
     
     private boolean finished = false;
     private int numPlayers;
-    private int activePlayer = 0;
+    private int activePlayerIndex = 0;
     private Player[] players;
     private Deck deck;
 
@@ -33,12 +33,16 @@ public class GoFishGame {
 	return numPlayers;
     }
 
-    public int getActivePlayer() {
-	return activePlayer;
+    public int getActivePlayerIndex() {
+	return activePlayerIndex;
     }
 
     public Player[] getPlayers() {
 	return players;
+    }
+    
+    public Player getActivePlayer() {
+	return players[activePlayerIndex];
     }
 
     public Deck getDeck() {
@@ -48,7 +52,7 @@ public class GoFishGame {
     public void init() {
 	players = new Player[numPlayers];
 	for (int i = 0; i < numPlayers; i ++) {
-	    players[i] = new Player("player" + ( i + 1 ), new PlayerHand());
+	    players[i] = new Player("Player" + ( i + 1 ), new PlayerHand());
 	}
 	deck = new Deck();
 	deck.buildDeck();
@@ -61,12 +65,12 @@ public class GoFishGame {
     }
     
     public boolean askForCard(int target, Rank rank) {
-	if (players[activePlayer].hasCard(rank) == -1) {
+	if (players[activePlayerIndex].hasCard(rank) == -1) {
 	    throw new IllegalArgumentException("Player must have at least one of the cards they are asking for");
 	}
 	if (players[target].hasCard(rank) != -1) {
 	    while (players[target].hasCard(rank) != -1) {
-		moveCard(players[target].getHand(), players[target].hasCard(rank), players[activePlayer].getHand());
+		moveCard(players[target].getHand(), players[target].hasCard(rank), players[activePlayerIndex].getHand());
 	    }
 	    return true;
 	}
@@ -75,13 +79,13 @@ public class GoFishGame {
     }
     
     public void goFish() {
-	moveCard(deck, 0, players[activePlayer].getHand());
+	moveCard(deck, 0, players[activePlayerIndex].getHand());
     }
     
     public Rank has4Match() {
-	for (Card i : players[activePlayer].getHandCardList()) {
+	for (Card i : players[activePlayerIndex].getHandCardList()) {
 	    int matches = 0;
-	    for (Card j : players[activePlayer].getHandCardList()) {
+	    for (Card j : players[activePlayerIndex].getHandCardList()) {
 		if (i.getRank().equals(j.getRank())) {
 		    matches ++;
 		}
@@ -95,9 +99,16 @@ public class GoFishGame {
     
     public void tradeMatch4Score(Rank rank) {
 	for (int i = 0; i < 4; i ++) {
-	    players[activePlayer].removeCard(players[activePlayer].hasCard(rank));
+	    players[activePlayerIndex].removeCard(players[activePlayerIndex].hasCard(rank));
 	}
-	players[activePlayer].addToScore();
+	players[activePlayerIndex].addToScore();
+    }
+    
+    public void endTurn() {
+	activePlayerIndex ++;
+	if (activePlayerIndex >= numPlayers) {
+	    activePlayerIndex = 0;
+	}
     }
     
     public void initialDeal(int numCardsPerPlayer) {
