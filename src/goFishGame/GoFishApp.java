@@ -67,7 +67,7 @@ public class GoFishApp {
     }
 
     public void clearScannerInputBuffer(Scanner scanner) {
-	scanner.reset();
+	//couldn't get a proper implementation of this working
     }
 
     public void waitForEnter() {
