@@ -142,14 +142,34 @@ public class Player {
         return hand.checkCards(card);
     }
     
+    /**
+     * This method calls the getCard method of the player's hand to return at 
+     * card from a specified index
+     * @param index the index of the card to be returned
+     * @return a card of the player's hand at the index passed
+     */
     public Card getCard(int index) {
 	return hand.getCard(index);
     }
     
+    /**
+     * This method calls the indexOf method of the player's hand to determine
+     * the index of a specific card rank
+     * @param rank the rank to be searched for
+     * @return the index of the first occurence of the rank, -1 if no card of
+     * that rank exists in the hand
+     */
     public int hasCard(Rank rank) {
 	return hand.indexOf(rank);
     }
     
+    /**
+     * This method calls the indexOf method of the player's hand to determine
+     * the index of a specific card if its in the player's hand or -1 if not
+     * @param card the card to be searched for
+     * @return the index of the card in the hand or -1 if that card is not in
+     * the hand
+     */
     public int hasCard(Card card) {
 	return hand.indexOf(card);
     }
@@ -161,6 +181,7 @@ public class Player {
      */
     @Override
     public String toString() {
-        return "Player: " + "name=" + name + "'s score=" + score +"\n"+hand.toString();
+        return "Player Name: " + name + "\nPlayer Score: " + score + "\n" 
+                + hand.toString();
     }
 }

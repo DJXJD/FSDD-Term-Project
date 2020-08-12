@@ -3,7 +3,8 @@
     Author: Nick De Luca, David Vejgman, Daniel Crawford
     Date: August 9th 2020
     Description
-    This abstract class defines the properties and attributes of a group of cards
+    This abstract class defines the properties and attributes of a group of 
+    cards
 */
 package goFishGame;
 
@@ -55,7 +56,8 @@ public abstract class GroupOfCards{
         Card lowest = cardList.get(0);
         for (int i = 0; i < cardList.size(); i++) {
             for (int j = 1; j < cardList.size(); j++) {
-                if(cardList.get(j).getRankNum() < cardList.get(j-1).getRankNum()){
+                if(cardList.get(j).getRankNum() < cardList.get(j-1)
+                        .getRankNum()){
                     
                     lowest = cardList.get(j);
                     cardList.remove(j);
@@ -153,9 +155,10 @@ public abstract class GroupOfCards{
     public abstract String showCards();
    
     /**
-     * 
-     * @param card
-     * @return 
+     * This method searches for a specific card and returns true if it is in 
+     * the group of cards of false otherwise
+     * @param card the card to search for
+     * @return true if card is in the group, false if not
      */
     public abstract boolean checkCards(Card card);
  
