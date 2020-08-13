@@ -99,9 +99,18 @@ public abstract class GroupOfCards{
      * @param card the given card to remove to the card list
      * @return true if remove was successful (ArrayList.add())
      */
-    public boolean removeCard(Card card) {
+    public boolean removeCard(Rank rank) {
+        for (Card card : cardList) {
+            if(card.getRank()==rank){
+                cardList.remove(card);
+                return true;
+            }
+        }
+        return false;
+    }
+    public void removeCard(Card card) {
         
-        return cardList.remove(card);
+        cardList.remove(card);
     }
     
     /**

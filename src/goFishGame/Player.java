@@ -88,20 +88,24 @@ public class Player {
      * rank is 4. 
      * @param card the card to search 4 of a kind for
      */
-    public void checkScore(Card card){
-        int cardCount = 0;
-        for (Card c : this.getHandCardList()) {
-            if(c.getRankNum()==card.getRankNum()){
-                    cardCount++;
+    public boolean checkScore(){
+        for (Rank rank : Rank.values()) {
+            
+            int cardCount = 0;
+            for (Card c : this.getHandCardList()) {
+                if(c.getRankNum()==rank.getNum()){
+                        cardCount++;
+                }
+            }
+            if(cardCount == 4){
+                addToScore();
+                for (int i = 1; i <= 4; i++) {
+                        removeCard(rank);
+                }
+                return true;
             }
         }
-        if(cardCount == 4){
-            addToScore();
-            for (int i = 1; i <= 4; i++) {
-                    //System.out.println("removed a card at: " + i);
-                    hand.removeCard(card);
-                }
-            } 
+        return false;
     }
     /**
      * This method delegates adding a card from the GroupOfCards class, 
@@ -119,8 +123,8 @@ public class Player {
      * @param card  the card to remove from the hand
      * @return false if removing the card failed
      */
-    public boolean removeCard(Card card){ //delegation
-        return hand.removeCard(card);
+    public boolean removeCard(Rank rank){ //delegation
+        return hand.removeCard(rank);
     }
     
     /**

@@ -59,7 +59,9 @@ public class Deck extends GroupOfCards {
             }
         }
     }
-
+    public int hasCard(Card card) {
+	return getCardList().indexOf(card);
+    }   
     /**
      * This method draws a card from the top of the deck 
      * @return the card object take from the deck's first position
