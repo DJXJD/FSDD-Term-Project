@@ -12,7 +12,8 @@ package goFishGame;
 import java.util.ArrayList;
 
 /**
- *
+ * @author Daniel Crawford
+ * @author Nick De Luca
  * @author David Vejgman
  */
 public class GoFishGame {
