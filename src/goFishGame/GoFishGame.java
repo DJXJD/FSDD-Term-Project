@@ -105,7 +105,7 @@ public class GoFishGame {
         }
         deck = new Deck();
         deck.buildDeck();
-        //deck.shuffle();
+        deck.shuffle();
         setActivePlayer(getTargetPlayer("Player1"));
         if (numPlayers == 2) {
             initialDeal(7);
@@ -157,7 +157,8 @@ public class GoFishGame {
                 }
             }
         }else{
-            throw new IllegalArgumentException("You cannot ask for a card you dont have");
+            throw new IllegalArgumentException("You cannot ask for a card "
+                    + "you dont have");
         }
         return cardNum;
     }
