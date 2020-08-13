@@ -43,7 +43,7 @@ public class GoFishApp {
     /**
      * Announces who's turn it is, clears the console before the machine is to
      * be passed to the new active player and waits for the player to be ready
-     * before beggining their turn
+     * before beginning their turn
      */
     public void announceTurn() {
         System.out.println("It is now " + game.getActivePlayer().getName() + "'s turn\n"
