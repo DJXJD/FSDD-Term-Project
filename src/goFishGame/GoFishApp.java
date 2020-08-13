@@ -45,6 +45,7 @@ public class GoFishApp {
             }
             if (finishedPlayers == game.getPlayers().size()) {
                 game.setFinished();
+                getWinner();
             }
         }
     }
@@ -101,7 +102,7 @@ public class GoFishApp {
         }
 
         if (game.getActivePlayer().checkScore()) {
-            System.out.println(game.getActivePlayer().getName()  + " Scored!");
+            System.out.println(game.getActivePlayer().getName() + " Scored!");
         }
     }
 
@@ -120,12 +121,12 @@ public class GoFishApp {
         }
         return game;
     }
-    
+
     public static void getWinner() {
         Player winner = game.getPlayers().get(0);
         for (int i = 1; i < game.getPlayers().size(); i++) {
             if (winner.getScore() < game.getPlayers().get(i).getScore()) {
-                
+
                 winner = game.getPlayers().get(i);
             }
         }
@@ -145,14 +146,21 @@ public class GoFishApp {
                 if (!(player.getHandCardList().isEmpty())) {
                     game.setActivePlayer(player);
                     gameApp.announceTurn();
-                    System.out.println(game.getActivePlayer());
+
                 } else {//if player empty
                     if (game.getDeck().getCardList().isEmpty()) {
                         continue;
                     } else {
                         drawFiveCards(player);
+                        game.setActivePlayer(player);
+                        gameApp.announceTurn();
+
                     }
                 }
+                if (game.getActivePlayer().checkScore()) {
+                    System.out.println(game.getActivePlayer().getName() + " Scored!");
+                }
+                System.out.println(game.getActivePlayer());
                 try {
                     String rank = getRank(scanner);
                     String target = askPlayer();
@@ -179,10 +187,6 @@ public class GoFishApp {
             }
             checkGameOver();
         }
-//        ArrayList<Integer> scores = new ArrayList(game.getPlayers().size());
-//        for (int i = 0; i < game.getPlayers().size(); i++) {
-//            scores.add(game.getPlayers().get(i).getScore());
-//        }
-//        Collections.max(scores);
-        }
+
     }
+}
