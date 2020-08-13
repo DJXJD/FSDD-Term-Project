@@ -1,3 +1,12 @@
+/*
+    GoFishApp.java
+    Authors: Nick De Luca, Daniel Crawford, David Vejgman
+    Date: August 9 2020
+    Description
+    Main class, controls the go fish game and implements most of the logic.
+    Acts as both the control and view in the MVC
+ */
+
 package goFishGame;
 
 import java.util.ArrayList;
@@ -11,12 +20,18 @@ import java.util.Scanner;
  * the user's card. To be used as starting code in ICE 1
  *
  * @author Nick De Luca
+ * @author David Vejgman
+ * @author Daniel Crawford
  * @date june 14th 2020
  */
 public class GoFishApp {
 
     private static GoFishGame game;
 
+    /**
+     * GoFishApp constructor that creats a game app object with a specified game
+     * @param game the game to use in the game app
+     */
     private GoFishApp(GoFishGame game) {
         if (game != null) {
             this.game = game;
@@ -25,6 +40,11 @@ public class GoFishApp {
         }
     }
 
+    /**
+     * Announces who's turn it is, clears the console before the machine is to
+     * be passed to the new active player and waits for the player to be ready
+     * before beggining their turn
+     */
     public void announceTurn() {
         System.out.println("It is now " + game.getActivePlayer().getName() + "'s turn\n"
                 + "Press Enter when ready to pass them the machine");
@@ -35,6 +55,10 @@ public class GoFishApp {
         waitForEnter();
     }
 
+    /**
+     * Checks is the players and deck still contain cards to determine if the
+     * game should be marked as finished, and does so
+     */
     public static void checkGameOver() {
         int finishedPlayers = 0;
         if (game.getDeck().getCardList().isEmpty()) {
@@ -50,6 +74,10 @@ public class GoFishApp {
         }
     }
 
+    /**
+     * Asks the user which player they'd like to target for their turn
+     * @return name of the targeted player
+     */
     public static String askPlayer() {
         Scanner sc = new Scanner(System.in);
         System.out.println("Enter the player name you'd like to ask for a card from: (such as 'Player1') ");
@@ -65,6 +93,9 @@ public class GoFishApp {
         return name;
     }
 
+    /**
+     * Pauses execution of code until the user presses enter
+     */
     public void waitForEnter() {
         Scanner emptyScanner = new Scanner(System.in);
         emptyScanner.nextLine();
