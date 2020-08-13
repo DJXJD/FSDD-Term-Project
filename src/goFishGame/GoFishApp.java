@@ -120,6 +120,17 @@ public class GoFishApp {
         }
         return game;
     }
+    
+    public static void getWinner() {
+        Player winner = game.getPlayers().get(0);
+        for (int i = 1; i < game.getPlayers().size(); i++) {
+            if (winner.getScore() < game.getPlayers().get(i).getScore()) {
+                
+                winner = game.getPlayers().get(i);
+            }
+        }
+        System.out.println("The winner is " + winner.getName() + "!");
+    }
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
@@ -139,7 +150,7 @@ public class GoFishApp {
                     if (game.getDeck().getCardList().isEmpty()) {
                         continue;
                     } else {
-                        drawFiveCards(game.getActivePlayer());
+                        drawFiveCards(player);
                     }
                 }
                 try {
